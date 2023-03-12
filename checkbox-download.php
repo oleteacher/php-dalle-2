@@ -5,10 +5,9 @@ if (isset($_POST['submit'])) {
   $image_size = $_POST['image-size'];
 
   $url = 'https://api.openai.com/v1/images/generations';
-  $headers = array(
-    'Content-Type: application/json',
-    'Authorization: Bearer sk-your-key-here'
-  );
+
+  $api_key = 'sk-YOUR-KEY-HERE';
+  
   $data = array(
     'model' => 'image-alpha-001',
     'prompt' => $prompt,
@@ -22,7 +21,10 @@ if (isset($_POST['submit'])) {
   curl_setopt($ch, CURLOPT_POST, true);
   curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'Authorization: Bearer ' . $api_key,
+));
 
   $result = curl_exec($ch);
   curl_close($ch);
