@@ -1,4 +1,4 @@
-# php-dalle-2
+# PHP Dalle-2 / Make it Simple
 PHP to Generate Images with Dalle 2
 
 Very basic start of PHP GUI to interface with Dalle-2.
